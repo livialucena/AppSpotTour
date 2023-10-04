@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img_background"
     tools:context=".MainActivity">
 
 <LinearLayout
@@ -22,9 +23,11 @@
             android:id="@+id/Login"
             android:layout_width="350dp"
             android:layout_height="55dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="70dp"
             android:padding="8dp"
             android:hint="User"
+            android:alpha="0.70"
+            android:singleLine="true"
             android:background="@drawable/border_textedit"
             android:drawableLeft="@drawable/ic_login"
             android:drawablePadding="8dp"/>
@@ -35,6 +38,10 @@
             android:layout_marginTop="15dp"
             android:padding="8dp"
             android:hint="Password"
+            android:alpha="0.70"
+            android:ems="10"
+            android:singleLine="true"
+            android:inputType="textPassword"
             android:background="@drawable/border_textedit"
             android:drawableLeft="@drawable/ic_lock_24"
             android:drawablePadding="8dp"/>
