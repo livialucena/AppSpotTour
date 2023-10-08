@@ -6,24 +6,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
-    Button butEntrar;
-
+    private Button butEntra;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
-        butEntrar.findViewById(R.id.btn_entrar);
+        butEntra.findViewById(R.id.btn_entrar);
 
-        butEntrar.setOnClickListener(new View.OnClickListener() {
+        butEntra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Menu.class);
-                startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), Menu.class);
+                startActivity(intent);;
             }
         });
 
