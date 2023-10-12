@@ -43,14 +43,16 @@
             android:background="@drawable/border_textedit"
             android:drawableLeft="@drawable/ic_lock_24"
             android:drawablePadding="8dp"/>
+
         <Button
             android:id="@+id/btn_entrar"
             android:layout_width="350dp"
             android:layout_height="60dp"
-            android:text="Entrar"
-            android:textSize="18dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/btn_ent_shape"/>
+            android:background="@drawable/btn_ent_shape"
+            android:onClick="Login"
+            android:text="Entrar"
+            android:textSize="18dp" />
 
     </LinearLayout>
 
