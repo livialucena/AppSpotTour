@@ -88,7 +88,6 @@ public class Login extends AppCompatActivity {
         }
 
     }
-
     private void WebService(String usr, String password)
     {
         //SOAPAction: "http://spottour/VerificaUsuario"

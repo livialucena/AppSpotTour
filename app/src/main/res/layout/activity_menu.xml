@@ -19,15 +19,31 @@
             android:layout_marginLeft="325dp"
             android:background="@drawable/btn_profile"/>
 
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_margin="10dp"
-            android:hint="Pesquisar"
-            android:padding="10dp"
-            android:drawableEnd="@drawable/ic_search"
-            android:drawablePadding="10dp"
-            android:background="@drawable/border_textedit" />
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/nm_cidade"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:layout_margin="10dp"
+                android:hint="Digite uma cidade"
+                android:padding="10dp"
+                android:background="@drawable/border_textedit" />
+
+            <ImageButton
+                android:id="@+id/btn_search"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_search"
+                android:onClick="PesquisarLocal"
+                android:src="@drawable/ic_search" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,41 +52,46 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/Tipo1"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginEnd="10dp"
                 android:text="Mundo"
-                android:textSize="15dp"/>
+                android:textSize="15sp"/>
+
             <TextView
+                android:id="@+id/Tipo2"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginEnd="10dp"
                 android:text="América"
-                android:textSize="15dp"/>
+                android:textSize="15sp"/>
+
             <TextView
+                android:id="@+id/Tipo3"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginEnd="10dp"
                 android:text="África"
-                android:textSize="15dp"/>
+                android:textSize="15sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginEnd="10dp"
                 android:text="Ásia"
-                android:textSize="15dp"/>
+                android:textSize="15sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginEnd="10dp"
                 android:text="Europa"
-                android:textSize="15dp"/>
+                android:textSize="15sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginEnd="10dp"
                 android:text="Oceania"
-                android:textSize="15dp"/>
+                android:textSize="15sp"/>
         </LinearLayout>
 
 
@@ -122,7 +143,7 @@
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:text="Eventos Recomendados"
-             android:textSize="20dp"
+             android:textSize="20sp"
              android:layout_marginTop="10dp"
              android:layout_marginLeft="10dp"/>
 
@@ -142,12 +163,13 @@
                     android:orientation="horizontal"
                     android:background="@drawable/base_evento_menu">
 
-                    <View
+                    <ImageView
+                        android:id="@+id/img_evento1"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:background="@color/dark_violet"
                         android:layout_margin="15dp">
-                    </View>
+                    </ImageView>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -156,59 +178,49 @@
                         android:layout_marginTop="10dp">
 
                         <TextView
+                            android:id="@+id/nm_evento1"
                             android:layout_width="wrap_content"
                             android:layout_height= "wrap_content"
-                            android:text="Rock In Rio"
-                            android:textSize="25dp"
+                            android:text=""
+                            android:textSize="25sp"
                             android:textColor="@color/white"/>
 
                         <TextView
+                            android:id="@+id/tipo_evento1"
                             android:layout_width="wrap_content"
                             android:layout_height= "wrap_content"
-                            android:text="Festival Musical"
-                            android:textSize="15dp"
+                            android:text=""
+                            android:textSize="15sp"
                             android:textColor="@color/white"/>
 
                         <TextView
+                            android:id="@+id/local_evnto1"
                             android:layout_width="wrap_content"
                             android:layout_height= "wrap_content"
-                            android:text="Brasil"
-                            android:textSize="20dp"
+                            android:text=""
+                            android:textSize="20sp"
                             android:textColor="@color/white"
                             android:layout_marginTop="5dp"/>
 
                     </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="5.0"
-                        android:textSize="15dp"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="80dp"
-                        android:layout_marginLeft="80dp"/>
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/baseline_star_border_24"
-                        android:layout_marginTop="80dp"
-                        android:layout_marginLeft="5dp" />
                 </LinearLayout>
 
                 <LinearLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="115dp"
                     android:orientation="horizontal"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/base_evento_menu">
 
-                    <View
+                    <ImageView
+                        android:id="@+id/img_evento2"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:background="@color/dark_violet"
-                        android:layout_margin="15dp">
-                    </View>
+                        android:layout_margin="15dp"/>
+
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -217,44 +229,32 @@
                         android:layout_marginTop="10dp">
 
                         <TextView
+                            android:id="@+id/nm_evento2"
                             android:layout_width="wrap_content"
                             android:layout_height= "wrap_content"
-                            android:text="Rock In Rio"
-                            android:textSize="25dp"
+                            android:text=""
+                            android:textSize="25sp"
                             android:textColor="@color/white"/>
 
                         <TextView
+                            android:id="@+id/tipo_evento2"
                             android:layout_width="wrap_content"
                             android:layout_height= "wrap_content"
-                            android:text="Festival Musical"
-                            android:textSize="15dp"
+                            android:text=""
+                            android:textSize="15sp"
                             android:textColor="@color/white"/>
 
                         <TextView
+                            android:id="@+id/local_evnto2"
                             android:layout_width="wrap_content"
                             android:layout_height= "wrap_content"
-                            android:text="Brasil"
-                            android:textSize="20dp"
+                            android:text=""
+                            android:textSize="20sp"
                             android:textColor="@color/white"
                             android:layout_marginTop="5dp"/>
 
                     </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="5.0"
-                        android:textSize="15dp"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="80dp"
-                        android:layout_marginLeft="80dp"/>
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/baseline_star_border_24"
-                        android:layout_marginTop="80dp"
-                        android:layout_marginLeft="5dp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -263,12 +263,13 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/base_evento_menu">
 
-                    <View
+                    <ImageView
+                        android:id="@+id/img_evento3"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:background="@color/dark_violet"
                         android:layout_margin="15dp">
-                    </View>
+                    </ImageView>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -277,13 +278,15 @@
                         android:layout_marginTop="10dp">
 
                         <TextView
+                            android:id="@+id/nm_evento3"
                             android:layout_width="wrap_content"
                             android:layout_height= "wrap_content"
-                            android:text="Rock In Rio"
+                            android:text=""
                             android:textSize="25dp"
                             android:textColor="@color/white"/>
 
                         <TextView
+                            android:id="@+id/tipo_evento3"
                             android:layout_width="wrap_content"
                             android:layout_height= "wrap_content"
                             android:text="Festival Musical"
@@ -291,6 +294,7 @@
                             android:textColor="@color/white"/>
 
                         <TextView
+                            android:id="@+id/local_evnto3"
                             android:layout_width="wrap_content"
                             android:layout_height= "wrap_content"
                             android:text="Brasil"
@@ -299,28 +303,10 @@
                             android:layout_marginTop="5dp"/>
 
                     </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="5.0"
-                        android:textSize="15dp"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="80dp"
-                        android:layout_marginLeft="80dp"/>
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/baseline_star_border_24"
-                        android:layout_marginTop="80dp"
-                        android:layout_marginLeft="5dp" />
                 </LinearLayout>
 
             </LinearLayout>
         </ScrollView>
-
-
 
     </LinearLayout>
 
