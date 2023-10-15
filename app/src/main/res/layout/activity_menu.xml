@@ -12,13 +12,14 @@
         android:orientation="vertical"
         tools:context=".Menu">
 
-        <Button
+        <ImageButton
             android:id="@+id/conta"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="325dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/btn_profile"
+            android:src="@drawable/ic_person"
             android:contentDescription="Perfil"/>
 
         <LinearLayout
@@ -211,7 +212,7 @@
                         android:layout_margin="5dp"
                         android:gravity="center"
                         android:text="Paris"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                 </RelativeLayout>
 
@@ -229,7 +230,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"

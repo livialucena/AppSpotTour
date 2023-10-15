@@ -43,6 +43,8 @@ public class Login extends AppCompatActivity {
     private EditText id;
     private EditText password;
     private Button butEntra;
+
+    private String usuario;
     private SoapPrimitive resultString;
 
     private Connection connect;
@@ -74,7 +76,9 @@ public class Login extends AppCompatActivity {
         usuario usu = new UsuarioDAO().selecionarUsuario(usuario, senha);
         if(usu != null){
 
+            usuario = usu.getUsuario().toString();
             Intent intent = new Intent(getApplicationContext(), Menu.class);
+            intent.putExtra("usuario", usuario);
             startActivity(intent);
 
             finish();

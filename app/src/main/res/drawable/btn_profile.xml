@@ -2,12 +2,10 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
 
-    <stroke android:width="3dp"
-        android:color="#803FA69F" />
+    <stroke android:width="1dp"
+        android:color="@color/black" />
 
-    <gradient android:angle="270"
-        android:centerColor="#B93C7767"
-        android:endColor="#A43E8E6E"
-        android:startColor="#834EC1AE" />
+    <solid
+        android:color="@color/white"/>
 
-    </shape>
+</shape>

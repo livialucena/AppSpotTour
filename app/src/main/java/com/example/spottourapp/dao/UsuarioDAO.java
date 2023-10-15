@@ -15,7 +15,7 @@ public class UsuarioDAO {
         try {
             Connection conn = ConnectionHelper.conectar();
             if(conn != null){
-                String sql = "select * from tbl_usr where tbl_usr = '"+usuario+"' and pass_usr = '"+ senha + "'";
+                String sql = "select * from tbl_usr where id_usr = '"+usuario+"' and pass_usr = '"+ senha + "'";
                 Statement st = null;
                 st = conn.createStatement();
                 ResultSet rs = st.executeQuery(sql);

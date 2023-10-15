@@ -25,6 +25,7 @@ import java.io.InputStream;
 
 public class Menu extends AppCompatActivity {
 
+    private ImageButton btn_profile;
     private ImageButton btn_search;
     private EditText nm_city;
     private TextView nm_evento1;
@@ -50,6 +51,8 @@ public class Menu extends AppCompatActivity {
     private TextView ImageViewText3;
     private TextView ImageViewText4;
 
+    private String usuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,9 +74,12 @@ public class Menu extends AppCompatActivity {
         img_evento2 = findViewById(R.id.img_evento2);
         img_evento3 = findViewById(R.id.img_evento3);
 
+        btn_profile = findViewById(R.id.conta);
         btn_search = findViewById(R.id.btn_search);
         nm_city = findViewById(R.id.nm_cidade);
 
+        Intent it = getIntent();
+        usuario = it.getStringExtra("usuario");
 
         for (int i = 1; i < 4; i++)
         {
@@ -257,6 +263,7 @@ public class Menu extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), CityInfo.class);
         if(v.equals(nImageView1)){
             intent.putExtra("namecity", ImageViewText1.getText().toString());
+
         }
         else if(v.equals(nImageView2))
         {
@@ -271,6 +278,7 @@ public class Menu extends AppCompatActivity {
             intent.putExtra("namecity", ImageViewText4.getText().toString());
         }
 
+        intent.putExtra("usuario", usuario);
         startActivity(intent);
     }
 }

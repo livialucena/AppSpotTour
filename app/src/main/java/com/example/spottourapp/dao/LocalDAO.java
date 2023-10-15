@@ -55,7 +55,7 @@ public class LocalDAO {
             Connection conn = ConnectionHelper.conectar();
             if(conn != null){
 
-                String sql = "SELECT TBL_CIDADE.NM_CIDADE, TBL_ESTADO.NM_ESTADO + ',' + TBL_PAIS.NM_PAIS, TBL_LOCAL.ID_DESC, TBL_LOCAL.ID_IMG" +
+                String sql = "SELECT TBL_LOCAL.ID_LOCAL, TBL_CIDADE.NM_CIDADE, TBL_ESTADO.NM_ESTADO + ',' + TBL_PAIS.NM_PAIS, TBL_LOCAL.ID_DESC, TBL_LOCAL.ID_IMG" +
                         "                        FROM TBL_LOCAL, TBL_CIDADE, TBL_ESTADO, TBL_PAIS " +
                         "                        WHERE TBL_LOCAL.ID_CID = TBL_CIDADE.ID_CIDADE " +
                         "                        AND TBL_LOCAL.ID_EST = TBL_ESTADO.ID_ESTADO " +
@@ -68,10 +68,11 @@ public class LocalDAO {
                 while (rs.next())
                 {
                     Local local = new Local();
-                    local.setNome(rs.getString(1));
-                    local.setLocal2(rs.getString(2));
-                    local.setDescricao(rs.getString(3));
-                    local.setImagem(rs.getString(4));
+                    local.setCod(rs.getInt(1));
+                    local.setNome(rs.getString(2));
+                    local.setLocal2(rs.getString(3));
+                    local.setDescricao(rs.getString(4));
+                    local.setImagem(rs.getString(5));
 
                     conn.close();
                     return local;

@@ -4,7 +4,7 @@ import kotlin.jvm.internal.PropertyReference0Impl;
 
 public class Local {
 
-    private  int cod;
+    private  Integer cod;
     private String imagem;
     private String nome;
 
@@ -28,11 +28,11 @@ public class Local {
         this.local2 = local2;
     }
 
-    public int getCod() {
+    public Integer getCod() {
         return cod;
     }
 
-    public void setCod(int cod) {
+    public void setCod(Integer cod) {
         this.cod = cod;
     }
 

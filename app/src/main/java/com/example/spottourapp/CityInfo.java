@@ -7,6 +7,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,11 +34,16 @@ public class CityInfo extends AppCompatActivity {
 
     private final String url = "http://api.openweathermap.org/data/2.5/weather";
     private final String appid = "2e9ad51c6670a4f87b4f45d169be4bf4";
-    TextView result;
-    TextView slocal;
-    TextView local_Comp;
-    TextView descricao;
-    ImageView imagem;
+    private TextView result;
+    private TextView slocal;
+    private TextView local_Comp;
+    private TextView descricao;
+    private ImageView imagem;
+
+    private  String usuario;
+    private  int codLocal;
+
+    private ImageButton btn_voltar;
 
 
     @Override
@@ -46,6 +53,7 @@ public class CityInfo extends AppCompatActivity {
 
         Intent it = getIntent();
         String city = it.getStringExtra("namecity");
+        usuario = it.getStringExtra("usuario");
 
         result = findViewById(R.id.info_metereologia);
         slocal = findViewById(R.id.textlocal);
@@ -58,6 +66,7 @@ public class CityInfo extends AppCompatActivity {
 
             String caminho_Aquivo = local.getImagem().toString();
 
+            codLocal = local.getCod();
             slocal.setText(local.getNome().toString());
             local_Comp.setText(local.getLocal2().toString());
             descricao.setText(local.getDescricao().toString());
@@ -99,9 +108,9 @@ public class CityInfo extends AppCompatActivity {
 
                     output += "Data/Horário:  " + time_real+
                               "\nTemperatura:  "+ temp +" ºC" +
-                              "\n Sensação Térmica: " + feelsLike + " ºC" +
-                              "\n Humidade: " + humidity + " %" +
-                              "\n Vento: " + wind + " Km/h";
+                              "\nSensação Térmica: " + feelsLike + " ºC" +
+                              "\nHumidade: " + humidity + " %" +
+                              "\nVento: " + wind + " Km/h";
 
                     result.setText(output);
 
@@ -119,5 +128,23 @@ public class CityInfo extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
     }
+    public void Voltar(View v)
+    {
+        Intent intent = new Intent(getApplicationContext(), Menu.class);
+        startActivity(intent);
+
+        finish();
+    }
+    public void Avalicao(View v)
+
+    {   Intent intent = new Intent(getApplicationContext(), Avalicao.class);
+        intent.putExtra("codigoLocal", codLocal);
+        intent.putExtra("nmLocal", slocal.getText().toString());
+        intent.putExtra("usuario", usuario);
+        startActivity(intent);
+
+    }
+
+
 
 }
