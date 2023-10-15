@@ -3,8 +3,11 @@ package com.example.spottourapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,16 +18,26 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.spottourapp.dao.LocalDAO;
+import com.example.spottourapp.model.Local;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class CityInfo extends AppCompatActivity {
 
     private final String url = "http://api.openweathermap.org/data/2.5/weather";
     private final String appid = "2e9ad51c6670a4f87b4f45d169be4bf4";
     TextView result;
+    TextView slocal;
+    TextView local_Comp;
+    TextView descricao;
+    ImageView imagem;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +48,33 @@ public class CityInfo extends AppCompatActivity {
         String city = it.getStringExtra("namecity");
 
         result = findViewById(R.id.info_metereologia);
+        slocal = findViewById(R.id.textlocal);
+        local_Comp = findViewById(R.id.textlocal_comp);
+        descricao = findViewById(R.id.text_descricao);
+        imagem = findViewById(R.id.imageView);
+
+        Local local = new LocalDAO().BuscaLocal2(city);
+        if(local != null){
+
+            String caminho_Aquivo = local.getImagem().toString();
+
+            slocal.setText(local.getNome().toString());
+            local_Comp.setText(local.getLocal2().toString());
+            descricao.setText(local.getDescricao().toString());
+
+            try {
+                InputStream inputStream = getAssets().open(caminho_Aquivo);
+
+                Bitmap bitmapImage = BitmapFactory.decodeStream(inputStream);
+                imagem.setImageBitmap(bitmapImage);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
+
 
         String tempUrl = "http://api.weatherstack.com/current?access_key="+ appid +"&query="+ city;
 
@@ -57,8 +97,8 @@ public class CityInfo extends AppCompatActivity {
                     JSONObject jsonObjectTime = jsonResponse.getJSONObject("location");
                     String time_real = jsonObjectTime.getString("localtime");
 
-                    output += "Horário: " + time_real+
-                              "\nTemperatura: "+ temp +" ºC" +
+                    output += "Data/Horário:  " + time_real+
+                              "\nTemperatura:  "+ temp +" ºC" +
                               "\n Sensação Térmica: " + feelsLike + " ºC" +
                               "\n Humidade: " + humidity + " %" +
                               "\n Vento: " + wind + " Km/h";

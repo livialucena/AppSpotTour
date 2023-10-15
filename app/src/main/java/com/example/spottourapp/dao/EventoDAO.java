@@ -12,7 +12,7 @@ import java.util.List;
 
 public class EventoDAO {
 
-    public Evento buscaEventos() {
+    public Evento buscaEventos(int count) {
 
         try {
             Connection conn = ConnectionHelper.conectar();
@@ -23,7 +23,8 @@ public class EventoDAO {
                             "  WHERE TBL_EVENTO.TIPO_EVENTO = TBL_TIPO.ID_TIPO " +
                             "  AND TBL_LOCAL_EVENTO.ID_EST = TBL_ESTADO.ID_ESTADO " +
                             "  AND TBL_LOCAL_EVENTO.ID_PAIS = TBL_PAIS.ID_PAIS " +
-                            "  AND  TBL_LOCAL_EVENTO.ID_EVENTO = TBL_EVENTO.ID_EVENTO";
+                            "  AND  TBL_LOCAL_EVENTO.ID_EVENTO = TBL_EVENTO.ID_EVENTO" +
+                            " AND TBL_EVENTO.ID_EVENTO = " + count;
 
                 Statement st = null;
                 st = conn.createStatement();
