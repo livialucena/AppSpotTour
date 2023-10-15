@@ -92,66 +92,6 @@ public class Login extends AppCompatActivity {
         }
 
     }
-    private void WebService(String usr, String password)
-    {
-        //SOAPAction: "http://spottour/VerificaUsuario"
-        //Namespace: http://spottour/
-        //Method: VerificaUsuario
-        //URL: http://spottour.application/WebServiceSpotTour/Service.asmx?WSDL
-
-        SOAP_ACTION = "http://spottour/VerificaUsuario";
-        METHOD_NAME = "VerificaUsuario";
-        NAMESPACE = "http://spottour/";
-        URL = "http://spottour.application/WebServiceSpotTour/Service.asmx";
-
-        try {
-
-
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-
-            SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
-            request.addProperty("login", usr);
-            request.addProperty("password", password);
-
-
-            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
-            envelope.dotNet = true;
-            envelope.setOutputSoapObject(request);
-            (new MarshalHashtable()).register(envelope);
-
-            HttpTransportSE http = new HttpTransportSE(URL);
-
-                    try {
-
-                        //transporte.call(SOAP_ACTION, sobre);
-                        Toast.makeText(this, "Deu Certo", Toast.LENGTH_SHORT).show();
-                        http.call(SOAP_ACTION, envelope);
-
-                        resultString = (SoapPrimitive) envelope.getResponse();
-
-                        //SoapPrimitive resultado = (SoapPrimitive)sobre.getResponse();
-
-                        //result = resultado.toString();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-            if (resultString.toString().equals("Erro")) {
-                Toast.makeText(this, "Deu Ruim", Toast.LENGTH_SHORT).show();
-            } else {
-                Intent intent = new Intent(getApplicationContext(), Menu.class);
-                startActivity(intent);
-                if (!resultString.equals(null)) {
-                    Toast.makeText(this, "Deu Certo", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-        catch(Exception e){
-                    e.printStackTrace();
-                }
-
-    }
     private void MensagemErro()
     {
         ConstraintLayout errorConstraintLayout = findViewById(R.id.errorConstraintLayout);

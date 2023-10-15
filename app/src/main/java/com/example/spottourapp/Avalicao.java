@@ -1,18 +1,26 @@
 package com.example.spottourapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.spottourapp.adapter.ListaAvaliaAdapter;
 import com.example.spottourapp.dao.AvalicaoDAO;
 import com.example.spottourapp.model.Avalia;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -76,14 +84,51 @@ public class Avalicao extends AppCompatActivity {
         av.setLoc(codLocal);
         av.setUsuario(usuario);
 
-        AvalicaoDAO dao = new AvalicaoDAO();
-        dao.Cadastrar(av);
+        Log.d("usuario", usuario);
 
-        Toast.makeText(getApplicationContext(), "Cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
-        comentario.setText("");
-        nota.setText("");
+        if(comentario.length() == 0)
+        {
+            MensagemErro();
+            return;
+        }
+        else
+        {
+            AvalicaoDAO dao = new AvalicaoDAO();
+            dao.Cadastrar(av);
 
-        Preenche(codLocal);
+            Toast.makeText(getApplicationContext(), "Cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+            comentario.setText("");
+            nota.setText("");
+
+            Preenche(codLocal);
+        }
+
+
+    }
+    private void MensagemErro()
+    {
+        ConstraintLayout errorConstraintLayout = findViewById(R.id.errorConstraintLayout);
+        View view = LayoutInflater.from(Avalicao.this).inflate(R.layout.error_dialog, errorConstraintLayout);
+        Button errorClose = view.findViewById(R.id.errorClose);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(Avalicao.this);
+        builder.setView(view);
+
+        final AlertDialog alertDialog = builder.create();
+
+        errorClose.findViewById(R.id.errorClose).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view)
+            {
+                alertDialog.dismiss();
+                Toast.makeText(Avalicao.this,"Fechado" ,Toast.LENGTH_SHORT).show();
+            }
+
+        });
+        if(alertDialog.getWindow() != null){
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+        alertDialog.show();
     }
 
 }
